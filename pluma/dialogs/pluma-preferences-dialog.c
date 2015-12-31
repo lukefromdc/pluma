@@ -1187,5 +1187,9 @@ pluma_show_preferences_dialog (PlumaWindow *parent)
 					      GTK_WINDOW (parent));
 	}
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	gtk_widget_realize (preferences_dialog); /*fix gtk3.20 window position */
+#endif  
+
 	gtk_window_present (GTK_WINDOW (preferences_dialog));
 }
