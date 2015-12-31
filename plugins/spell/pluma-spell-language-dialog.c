@@ -278,6 +278,10 @@ pluma_spell_language_dialog_new (GtkWindow                       *parent,
 	gtk_window_set_transient_for (GTK_WINDOW (dlg), parent);
 	gtk_widget_grab_focus (dlg->languages_treeview);					     
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	gtk_widget_realize (dlg); /*fix gtk3.20 window position */
+#endif 
+
 	return GTK_WIDGET (dlg);
 }
 
