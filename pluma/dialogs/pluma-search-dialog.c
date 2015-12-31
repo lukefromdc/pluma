@@ -487,7 +487,9 @@ pluma_search_dialog_new (GtkWindow *parent,
 		gtk_window_set_destroy_with_parent (GTK_WINDOW (dlg),
 						    TRUE);
 	}
-	
+#if GTK_CHECK_VERSION (3, 0, 0)
+	gtk_widget_realize (dlg); /*fix gtk3.20 window position */
+#endif 		
 	return GTK_WIDGET (dlg);
 }
 
