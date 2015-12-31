@@ -504,6 +504,10 @@ pluma_file_chooser_dialog_new (const gchar          *title,
 						       varargs);
 	va_end (varargs);
 
+#if GTK_CHECK_VERSION (3, 0, 0)
+	gtk_widget_realize (result); /*fix gtk3.20 window position */
+#endif 
+
 	return result;
 }
 
