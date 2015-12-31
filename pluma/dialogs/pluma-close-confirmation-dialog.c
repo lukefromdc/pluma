@@ -378,7 +378,10 @@ pluma_close_confirmation_dialog_new (GtkWindow *parent,
 		
 		gtk_window_set_transient_for (GTK_WINDOW (dlg), parent);					     
 	}
-
+	
+#if GTK_CHECK_VERSION (3, 0, 0)
+	gtk_widget_realize (dlg); /*fix gtk3.20 window position */
+#endif 
 	return dlg;
 }
 
